@@ -4,9 +4,9 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
-String? getUserEmail(){
+String? getUserEmail() {
   final User? user = _auth.currentUser;
-  if(user != null){
+  if (user != null) {
     return user.email;
   }
   return null;
@@ -87,7 +87,7 @@ class ProfileScreen extends StatelessWidget {
                   'Amogh Saxena',
                   style: Theme.of(context)
                       .textTheme
-                      .headline5
+                      .headlineSmall
                       ?.copyWith(color: Colors.grey.shade800, fontSize: 24),
                 ),
                 const SizedBox(
@@ -97,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
                   getUserEmail().toString(),
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
+                      .bodyMedium
                       ?.copyWith(color: Colors.grey.shade800, fontSize: 16),
                 ),
                 const SizedBox(
@@ -107,7 +107,7 @@ class ProfileScreen extends StatelessWidget {
                   width: 200,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF6F35A5),
+                      backgroundColor: const Color(0xFF6F35A5),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -117,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                       'Edit Profile',
                       style: Theme.of(context)
                           .textTheme
-                          .button
+                          .labelLarge
                           ?.copyWith(color: Colors.white, fontSize: 16),
                     ),
                   ),
@@ -202,43 +202,42 @@ class ProfileMenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: press,
-      leading: Container(
-        width: 40,
-        height: 40,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-         color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(10),
+        onTap: press,
+        leading: Container(
+          width: 40,
+          height: 40,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(
+            icon,
+            color: color ?? Colors.grey.shade800,
+            size: 22,
+          ),
         ),
-        child: Icon(
-          icon,
-          color: color ?? Colors.grey.shade800,
-          size: 22,
+        title: Text(
+          text,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: color, fontSize: 18),
         ),
-      ),
-      title: Text(
-        text,
-        style: Theme.of(context)
-            .textTheme
-            .bodyText2
-            ?.copyWith(color: color, fontSize: 18),
-      ),
-      trailing: endIcon
-          ? Container(
-            width: 30,
-            height: 30,
-            decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: const Icon(
-              LineAwesomeIcons.angle_right,
-              color: Colors.black,
-              size: 16,
-            ),
-          )
-          : null
-    );
+        trailing: endIcon
+            ? Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: const Icon(
+                  LineAwesomeIcons.angle_right,
+                  color: Colors.black,
+                  size: 16,
+                ),
+              )
+            : null);
   }
 }

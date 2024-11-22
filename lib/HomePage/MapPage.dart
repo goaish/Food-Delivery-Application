@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class MapPage extends StatelessWidget {
@@ -47,7 +49,7 @@ class MapPage extends StatelessWidget {
                 'Based on your location,\n here are the nearest hotels',
                 style: Theme.of(context)
                     .textTheme
-                    .headline5
+                    .headlineSmall
                     ?.copyWith(color: Colors.black),
               ),
             ],

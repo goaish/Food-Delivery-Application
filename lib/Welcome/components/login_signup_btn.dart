@@ -16,13 +16,13 @@ class LoginAndSignupBtn extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return LoginScreen();
-                  },
-                ),
-              );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const LoginScreen();
+                    },
+                  ),
+                );
               },
               child: Text("Login".toUpperCase()),
             )),
@@ -34,17 +34,19 @@ class LoginAndSignupBtn extends StatelessWidget {
                 backgroundColor: kPrimaryLightColor,
                 elevation: 0,
               ),
-              onPressed: () {Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SignUpScreen();
-                  },
-                ),
-              );},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const SignUpScreen();
+                    },
+                  ),
+                );
+              },
               child: Text(
                 "Sign Up".toUpperCase(),
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
               )),
         )
       ],

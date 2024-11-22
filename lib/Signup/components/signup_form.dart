@@ -25,12 +25,6 @@ class _SignUpFormState extends State<SignUpForm> {
       _isLoading = true;
     });
     try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -39,12 +33,7 @@ class _SignUpFormState extends State<SignUpForm> {
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-    } catch (e) {
-      print(e);
+      } else if (e.code == 'email-already-in-use') {}
     } finally {
       setState(() {
         _isLoading = false;
@@ -77,10 +66,10 @@ class _SignUpFormState extends State<SignUpForm> {
               }
               return null;
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Your email",
               prefixIcon: Padding(
-                padding: const EdgeInsets.all(kDefaultPadding),
+                padding: EdgeInsets.all(kDefaultPadding),
                 child: Icon(Icons.person),
               ),
             ),
@@ -98,10 +87,10 @@ class _SignUpFormState extends State<SignUpForm> {
                 }
                 return null;
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Your password",
                 prefixIcon: Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
+                  padding: EdgeInsets.all(kDefaultPadding),
                   child: Icon(Icons.lock),
                 ),
               ),
@@ -129,7 +118,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return LoginScreen();
+                    return const LoginScreen();
                   },
                 ),
               );

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -88,7 +90,7 @@ Widget itemBuilder(Size size, BuildContext context, int index) {
       child: Material(
         elevation: 3,
         borderRadius: BorderRadius.circular(18),
-        child: Container(
+        child: SizedBox(
           height: size.height / 2.5,
           width: size.width / 1.1,
           child: Column(
@@ -106,7 +108,7 @@ Widget itemBuilder(Size size, BuildContext context, int index) {
                       fit: BoxFit.cover),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: size.height / 12,
                 width: size.width / 1.2,
                 child: Row(
@@ -139,7 +141,7 @@ Widget itemBuilder(Size size, BuildContext context, int index) {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: size.width / 1.2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,9 +154,8 @@ Widget itemBuilder(Size size, BuildContext context, int index) {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                     
                     Padding(
-                      padding: const EdgeInsets.only(right:8.0),
+                      padding: const EdgeInsets.only(right: 8.0),
                       child: Text(
                         "${restaurantList[index].price} for one",
                         style: const TextStyle(
@@ -170,7 +171,6 @@ Widget itemBuilder(Size size, BuildContext context, int index) {
             ],
           ),
         ),
-        
       ),
     ),
   );

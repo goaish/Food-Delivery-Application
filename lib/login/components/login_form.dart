@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
 import '../../Signup/signup_screen.dart';
+// ignore: unnecessary_import
+import 'package:flutter/foundation.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -21,14 +23,13 @@ class _LoginFormState extends State<LoginForm> {
 
   bool _isLoading = false;
 
+  bool? get kDebugMode => null;
+
   void _signInWithEmailAndPassword() async {
     setState(() {
       _isLoading = true;
     });
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: _emailController.text, password: _passwordController.text);
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -39,24 +40,12 @@ class _LoginFormState extends State<LoginForm> {
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
+        if (kDebugMode != null) {}
+      } else if (e.code == 'wrong-password') {}
     } finally {
       setState(() {
         _isLoading = false;
       });
-    }
-
-    @override
-    void dispose() {
-      _emailController
-          .dispose(); //dispose of the controller when the widget is disposed
-      _passwordController.dispose();
-      super.dispose();
-
-      // This trailing comma makes auto-formatting nicer for build methods.
     }
   }
 
@@ -73,7 +62,7 @@ class _LoginFormState extends State<LoginForm> {
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
             validator: (value) {
-              if(value!.isEmpty){
+              if (value!.isEmpty) {
                 return "Please enter your email";
               }
               return null;
@@ -94,7 +83,7 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: true,
               cursorColor: kPrimaryColor,
               validator: (value) {
-                if(value!.isEmpty){
+                if (value!.isEmpty) {
                   return "Please enter your password";
                 }
                 return null;
@@ -109,7 +98,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           const SizedBox(height: kDefaultPadding),
-           _isLoading
+          _isLoading
               ? const CircularProgressIndicator()
               : Hero(
                   tag: "login_btn",
@@ -122,7 +111,6 @@ class _LoginFormState extends State<LoginForm> {
                     child: Text("Login".toUpperCase()),
                   ),
                 ),
-          
           const SizedBox(height: kDefaultPadding),
           AlreadyHaveAnAccountCheck(
             press: () {

@@ -11,24 +11,24 @@ class WelcomeImage extends StatelessWidget {
       children: [
         Text(
           "Welcome to Foodie",
-          style: Theme.of(context).textTheme.headline4!.copyWith(
+          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
         ),
-        SizedBox(height: kDefaultPadding * 2),
+        const SizedBox(height: kDefaultPadding * 2),
         Row(
           children: [
-            Spacer(),
-            Container(
+            const Spacer(),
+            SizedBox(
               width: 300,
               height: 300,
               child: SvgPicture.asset("assets/icons/foodlogo.svg"),
             ),
-            Spacer()
+            const Spacer()
           ],
         ),
-        SizedBox(height: kDefaultPadding * 2),
+        const SizedBox(height: kDefaultPadding * 2),
       ],
     );
   }

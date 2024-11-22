@@ -1,3 +1,4 @@
+// ignore: file_names
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
@@ -138,7 +139,7 @@ class MainHomePage extends StatelessWidget {
               height: he.height / 3,
               width: he.width,
               child: GridView.builder(
-                itemCount: foodItemList.length,
+                  itemCount: foodItemList.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, mainAxisSpacing: 10),
                   itemBuilder: (context, index) {
@@ -155,7 +156,7 @@ class MainHomePage extends StatelessWidget {
 
 class IconBottomBar extends StatelessWidget {
   const IconBottomBar({
-    Key? key,
+    super.key,
     required this.text,
     required this.icon,
     required this.selected,
@@ -194,41 +195,39 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(25),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Find Your\nFavorite Food",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+    return Padding(
+      padding: const EdgeInsets.all(25),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Find Your\nFavorite Food",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                  offset: const Offset(12, 26),
+                  blurRadius: 50,
+                  spreadRadius: 0,
+                  color: Colors.grey.withOpacity(.25)),
+            ]),
+            child: const CircleAvatar(
+              radius: 25,
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.food_bank,
+                size: 25,
+                color: Color(0xFF6F35A5),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    offset: const Offset(12, 26),
-                    blurRadius: 50,
-                    spreadRadius: 0,
-                    color: Colors.grey.withOpacity(.25)),
-              ]),
-              child: const CircleAvatar(
-                radius: 25,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.food_bank,
-                  size: 25,
-                  color: Color(0xFF6F35A5),
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
@@ -417,7 +416,7 @@ class CardListView extends StatelessWidget {
         height: 175,
         child: ListView(
           scrollDirection: Axis.horizontal,
-          children: [
+          children: const [
             Card(
                 "Vegan",
                 "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/Resturant%20Image%20(1).png?alt=media&token=461162b1-686b-4b0e-a3ee-fae1cb8b5b33",
@@ -453,7 +452,7 @@ class MenuListView extends StatelessWidget {
         height: 175,
         child: ListView(
           scrollDirection: Axis.horizontal,
-          children: [
+          children: const [
             Card(
                 "Biryani",
                 "https://icon2.cleanpng.com/20180330/axe/kisspng-hyderabadi-biryani-indian-cuisine-dish-chicken-mea-biryani-5abedc42d00da9.6620510115224576668522.jpg",
@@ -482,7 +481,8 @@ class Card extends StatelessWidget {
   final String imageUrl;
   final String subtitle;
 
-  Card(this.text, this.imageUrl, this.subtitle, {Key? key}) : super(key: key);
+  const Card(this.text, this.imageUrl, this.subtitle, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -512,10 +512,10 @@ class Card extends StatelessWidget {
                 return child;
               }
               return AnimatedOpacity(
-                child: child,
                 opacity: frame == null ? 0 : 1,
                 duration: const Duration(seconds: 1),
                 curve: Curves.easeOut,
+                child: child,
               );
             }),
             const Spacer(),

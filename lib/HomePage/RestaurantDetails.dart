@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:foodie/constants.dart';
 
@@ -31,7 +33,7 @@ class RestaurantDetails extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Order Now",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -39,11 +41,11 @@ class RestaurantDetails extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               if (value != 0)
                 Text(
                   "(${value.toString()})",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     fontSize: 20,
@@ -101,9 +103,9 @@ class MainScreen extends StatelessWidget {
   }
 }
 
-
 class MenuItems extends StatefulWidget {
-  MenuItems({Key? key, required this.index});
+  //const MenuItems({super.key, Key? key, required this.index});
+  const MenuItems({super.key, required this.index});
 
   final int index;
 
@@ -226,10 +228,6 @@ class _MenuItemsState extends State<MenuItems> {
     );
   }
 }
-
-
-
-
 
 class TopImage extends StatefulWidget {
   final int index;

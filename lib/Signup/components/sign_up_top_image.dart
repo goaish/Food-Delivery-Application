@@ -14,13 +14,14 @@ class SignUpScreenTopImage extends StatelessWidget {
       children: [
         Text(
           "Sign Up".toUpperCase(),
-          style:  Theme.of(context).textTheme.headline4, textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineMedium,
+          textAlign: TextAlign.center,
         ),
-        SizedBox(height: kDefaultPadding),
+        const SizedBox(height: kDefaultPadding),
         Row(
           children: [
             const Spacer(),
-             Container(
+            SizedBox(
               height: 300,
               width: 300,
               child: SvgPicture.asset("assets/icons/Eating.svg"),
@@ -28,7 +29,7 @@ class SignUpScreenTopImage extends StatelessWidget {
             const Spacer(),
           ],
         ),
-        SizedBox(height: kDefaultPadding),
+        const SizedBox(height: kDefaultPadding),
       ],
     );
   }

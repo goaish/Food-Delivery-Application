@@ -10,12 +10,14 @@ class LoginScreenTopImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("LOGIN", style: Theme.of(context).textTheme.headline4, textAlign: TextAlign.center),
+        Text("LOGIN",
+            style: Theme.of(context).textTheme.headlineMedium,
+            textAlign: TextAlign.center),
         const SizedBox(height: kDefaultPadding),
         Row(
           children: [
             const Spacer(),
-            Container(
+            SizedBox(
               height: 300,
               width: 300,
               child: SvgPicture.asset("assets/icons/delivery.svg"),
@@ -23,7 +25,7 @@ class LoginScreenTopImage extends StatelessWidget {
             const Spacer(),
           ],
         ),
-        SizedBox(height: kDefaultPadding * 2)
+        const SizedBox(height: kDefaultPadding * 2)
       ],
     );
   }
